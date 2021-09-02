@@ -18,11 +18,16 @@ public class Test_001 extends BaseClass {
 
     @Test
     public void setup() throws InterruptedException {
-        extentReports = new ExtentReports(USERDIR + File.separator + "report.html", false);
-        extentReports.loadConfig(new File(USERDIR + "report_config.xml"));
+        extentReports = new ExtentReports(USERDIR + File.separator + "screen" + File.separator + "report.html", false);
+        extentReports.loadConfig(new File(USERDIR + File.separator + "report_config.xml"));
         extentTest = extentReports.startTest("TEST AUTOMATION");
 
         Thread.sleep(5000);
         extentTest.addBase64ScreenShot(Screen.getBase64MobileScreenshot(driver));
+
+
+        extentReports.endTest(extentTest);
+        extentReports.close();
+
     }
 }
