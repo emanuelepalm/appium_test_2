@@ -1,1 +1,1 @@
-appium
+appium -p 4569 --default-capabilities "{\"launch-timeout\": 3000}"
