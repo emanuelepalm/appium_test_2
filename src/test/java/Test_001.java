@@ -1,6 +1,7 @@
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.testng.annotations.Test;
 
 import base.BaseClass;
@@ -24,7 +25,7 @@ public class Test_001 extends BaseClass {
             extentTest = extentReports.startTest("TEST AUTOMATION");
 
             Thread.sleep(5000);
-            extentTest.addBase64ScreenShot(Screen.getBase64MobileScreenshot(driver));
+            extentTest.log(LogStatus.PASS,"PASS",extentTest.addBase64ScreenShot(Screen.getBase64MobileScreenshot(driver)));
             System.out.println("SUCCESS!!!");
 
             extentReports.endTest(extentTest);
