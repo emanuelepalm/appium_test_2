@@ -58,7 +58,7 @@ public class AndroidEmu {
 
             if(error != "") System.out.println(error);
             else if(output != ""){
-                if(output.contains("list"))
+                if(output.contains("List"))
                     return false;
                 if(output.contains("offline"))
                     return false;
