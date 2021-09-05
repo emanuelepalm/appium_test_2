@@ -1,1 +1,1 @@
-C:\ADB\emulator\emulator -avd Pixel4J &
+C:\ADB\emulator\emulator -avd Pixel4J & echo "RUNNING"
