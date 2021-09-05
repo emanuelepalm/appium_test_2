@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Gennaro">
-    <test name="app">
+    <test name="app0">
         <parameter name="deviceName" value="emulator-5554" />
         <parameter name="udid" value="emulator-5554" />
         <parameter name="platformVersion" value="30.0" />
@@ -13,7 +13,7 @@
             <class name="Test_001"/>
         </classes>
     </test>
-    <test name="app">
+    <test name="app1">
         <parameter name="deviceName" value="emulator-5554" />
         <parameter name="udid" value="emulator-5554" />
         <parameter name="platformVersion" value="30.0" />
@@ -25,7 +25,7 @@
             <class name="Test_001"/>
         </classes>
     </test>
-    <test name="app">
+    <test name="app2">
         <parameter name="deviceName" value="emulator-5554" />
         <parameter name="udid" value="emulator-5554" />
         <parameter name="platformVersion" value="30.0" />
