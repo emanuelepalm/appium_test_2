@@ -27,9 +27,6 @@ public class BaseClass {
         @Parameters({"udid", "platformVersion","url1","url2","appname"})
         public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
-
-            AndroidEmu.launchEmulator();
-
             AndroidEmu.checkDevices();
             server = new AppiumServer();
             Thread.sleep(5000);
@@ -47,7 +44,6 @@ public class BaseClass {
 
         @AfterTest
         public void tearDown() throws InterruptedException {
-            AndroidEmu.closeEmu();
             server.stop();
             Thread.sleep(5000);
             System.out.println("APPIUM STOPPING");
