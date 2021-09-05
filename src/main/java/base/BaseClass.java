@@ -27,10 +27,11 @@ public class BaseClass {
         public void setup(String udid,String platformVersion,String url1, String url2) throws InterruptedException, MalformedURLException
         {
 
-            AndroidEmu.launchEmulator("Pixel4J");
-            Thread.sleep(5000);
+
 
             server = new AppiumServer();
+            Thread.sleep(5000);
+            AndroidEmu.launchEmulator("Pixel4J");
             Thread.sleep(5000);
             DesiredCapabilities cap=new DesiredCapabilities();
             cap.setCapability("deviceName", emuName);
