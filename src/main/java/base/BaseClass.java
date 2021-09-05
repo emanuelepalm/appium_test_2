@@ -27,11 +27,8 @@ public class BaseClass {
         public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
 
-
-
             server = new AppiumServer();
             Thread.sleep(5000);
-
 
             DesiredCapabilities cap=new DesiredCapabilities();
             cap.setCapability("deviceName", emuName);
@@ -45,8 +42,10 @@ public class BaseClass {
         }
 
         @AfterTest
-        public void tearDown(){
+        public void tearDown() throws InterruptedException {
             server.stop();
+            Thread.sleep(5000);
+            System.out.println("APPIUM STOPPING");
         }
 }
 
