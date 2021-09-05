@@ -31,7 +31,7 @@ public class AndroidEmu {
                 System.out.println(line);
             }
             process.waitFor(60, TimeUnit.SECONDS);
-
+            Thread.sleep(30000);
             System.out.println("Emulator launched successfully!");
         } catch (Exception e) {
             e.printStackTrace();
