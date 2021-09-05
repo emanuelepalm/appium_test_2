@@ -26,7 +26,6 @@ public class Test_001 extends BaseClass {
             System.out.println("SUCCESS!!!");
 
             extentReports.endTest(extentTest);
-            extentReports.close();
         } catch (Exception e){
             System.out.println("FAILED: " + e.getMessage());
         }

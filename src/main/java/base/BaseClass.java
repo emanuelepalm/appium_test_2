@@ -9,10 +9,7 @@ import appium.AppiumServer;
 import com.sun.org.apache.xpath.internal.operations.And;
 import emu.AndroidEmu;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import com.relevantcodes.extentreports.ExtentReports;
 
 import io.appium.java_client.AppiumDriver;
@@ -60,6 +57,11 @@ public class BaseClass {
             server.stop();
             Thread.sleep(5000);
             System.out.println("APPIUM STOPPING");
+        }
+
+        @AfterSuite
+        public void end() {
+            extentReports.close();
         }
 }
 

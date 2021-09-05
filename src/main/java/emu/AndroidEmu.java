@@ -56,10 +56,7 @@ public class AndroidEmu {
             String error = error(process);
             String output = output(process);
 
-            if(error != "") System.out.println(error);
-            else if(output != ""){
-                if(output.contains("List"))
-                    output = output(process);
+            if(output != "" && error != "") {
                 if(output.contains("offline"))
                     return false;
             }
@@ -73,22 +70,24 @@ public class AndroidEmu {
 
     private static String error(Process process) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        String error = "";
         String line;
         while ((line = br.readLine()) != null) {
             System.out.println(line);
-            return line;
+            error += line;
         }
-        return "";
+        return error;
     }
 
     private static String output(Process process) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String output = "";
         String line;
         while ((line = br.readLine()) != null) {
             System.out.println(line);
-            return line;
+            output += line;
         }
-        return "";
+        return output;
     }
 
     public static void closeEmu() {
