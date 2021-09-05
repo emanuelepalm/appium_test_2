@@ -58,8 +58,10 @@ public class AndroidEmu {
 
             if(error != "") System.out.println(error);
             else if(output != ""){
+                if(output.contains("list"))
+                    return false;
                 if(output.contains("offline"))
-                return false;
+                    return false;
             }
             process.waitFor(60, TimeUnit.SECONDS);
             return true;
