@@ -19,7 +19,7 @@ public class AndroidEmu {
         System.out.println("Starting emulator for '" + nameOfAVD + "' ...");
         String[] aCommand = new String[] { emulatorPath, "-avd", nameOfAVD,"-no-boot-anim","-wipe-data"};
         try {
-            for(int i = 0; i < 5; i++) {
+            for(int i = 0; i < 10; i++) {
                 Process process = new ProcessBuilder(aCommand).start();
                 BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
                 String line;
