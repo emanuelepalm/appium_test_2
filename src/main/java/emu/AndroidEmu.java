@@ -1,6 +1,8 @@
 package emu;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 public class AndroidEmu {
@@ -18,8 +20,16 @@ public class AndroidEmu {
         String[] aCommand = new String[] { emulatorPath, "-avd", nameOfAVD,"-no-boot-anim","-wipe-data"};
         try {
             Process process = new ProcessBuilder(aCommand).start();
-            System.out.println(process.getErrorStream());
-            System.out.println(process.getOutputStream());
+            BufferedReader br = new BufferedReader( new InputStreamReader( process.getInputStream()));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            BufferedReader br1 = new BufferedReader( new InputStreamReader( process.getErrorStream()));
+            String line1=null;
+            while ((line1 = br1.readLine()) != null) {
+                System.out.println(line);
+            }
             process.waitFor(60, TimeUnit.SECONDS);
 
             System.out.println("Emulator launched successfully!");
