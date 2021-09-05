@@ -18,7 +18,10 @@ public class AndroidEmu {
         String[] aCommand = new String[] { emulatorPath, "-avd", nameOfAVD,"-no-boot-anim","-wipe-data"};
         try {
             Process process = new ProcessBuilder(aCommand).start();
+            System.out.println(process.getErrorStream());
+            System.out.println(process.getOutputStream());
             process.waitFor(60, TimeUnit.SECONDS);
+
             System.out.println("Emulator launched successfully!");
         } catch (Exception e) {
             e.printStackTrace();
