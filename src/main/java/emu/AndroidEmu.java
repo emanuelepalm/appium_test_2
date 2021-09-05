@@ -56,9 +56,9 @@ public class AndroidEmu {
             String error = error(process);
             String output = output(process);
 
-            if(output != "" && error != "") {
+            if(output != "" && error != "+") {
                 if(output.contains("offline"))
-                    return false;
+                        return false;
             }
             process.waitFor(60, TimeUnit.SECONDS);
             return true;
@@ -83,10 +83,14 @@ public class AndroidEmu {
         BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String output = "";
         String line;
-        while ((line = br.readLine()) != null) {
+        boolean emu = false;
+        while ((line = br.readLine()) != null && !emu) {
             System.out.println(line);
             output += line;
+            emu = line.contains("emulator");
         }
+        System.out.println(line);
+        output += line;
         return output;
     }
 
