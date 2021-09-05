@@ -1,0 +1,1 @@
+C:\ADB\emulator\emulator -avd Pixel4J &
