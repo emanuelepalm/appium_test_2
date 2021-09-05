@@ -10,6 +10,12 @@ public class AndroidEmu {
     private static String adbPath = sdkPath + "platform-tools" + File.separator + "adb";
     private static String emulatorPath = sdkPath +  "emulator" + File.separator + "emulator ";
 
+
+    static boolean isWindows() {
+        return System.getProperty("os.name").toLowerCase().contains("win");
+    }
+
+    static String npm = isWindows() ? "npm.cmd" : "npm";
     /**
      * Starts an emulator
      *
@@ -17,7 +23,7 @@ public class AndroidEmu {
      */
     public static void launchEmulator() {
         System.out.println("Starting emulator...");
-        String[] aCommand = new String[] { "android-emulator"};
+        String[] aCommand = new String[] { npm,"run-script","start"};
         try {
                 Process process = new ProcessBuilder(aCommand).start();
                 BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));

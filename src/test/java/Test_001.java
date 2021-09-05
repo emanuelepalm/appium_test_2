@@ -20,7 +20,7 @@ public class Test_001 extends BaseClass {
     @Test
     public void setup() throws InterruptedException {
         try {
-            extentReports = new ExtentReports(USERDIR + File.separator + "report" + File.separator + "report.html", true);
+            extentReports = new ExtentReports(USERDIR + File.separator + "report" + File.separator + "report.html", false);
             extentReports.loadConfig(new File(USERDIR + File.separator + "report_config.xml"));
             extentTest = extentReports.startTest("TEST AUTOMATION");
 

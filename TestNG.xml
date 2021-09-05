@@ -21,7 +21,7 @@
         <parameter name="platformVersion" value="30.0" />
         <parameter name="url1" value="http://0.0.0.0:" />
         <parameter name="url2" value="/wd/hub"/>
-        <parameter name="appname" value="app1"/>
+        <parameter name="appname" value="app2"/>
 
         <classes>
             <class name="Test_001"/>
