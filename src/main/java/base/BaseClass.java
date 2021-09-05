@@ -31,13 +31,14 @@ public class BaseClass {
         public void init(String suiteName){
             extentReports = new ExtentReports(USERDIR + File.separator + "report" + File.separator + suiteName + ".html", true);
             extentReports.loadConfig(new File(USERDIR + File.separator + "report_config.xml"));
+            AndroidEmu.launchEmulator();
+
         }
 
         @BeforeTest
         @Parameters({"udid", "platformVersion","url1","url2","appname"})
         public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
-            AndroidEmu.launchEmulator();
             Thread.sleep(5000);
 
             while(!AndroidEmu.checkDevices());
@@ -67,6 +68,7 @@ public class BaseClass {
         @AfterSuite
         public void end() {
             extentReports.close();
+            AndroidEmu.closeEmu();
         }
 }
 
