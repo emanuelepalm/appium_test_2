@@ -33,6 +33,11 @@ public class BaseClass {
             Thread.sleep(5000);
             AndroidEmu.launchEmulator("Pixel4J");
             Thread.sleep(5000);
+            System.out.println("Waiting");
+            Thread.sleep(5000);
+            System.out.println("Waiting");
+            Thread.sleep(5000);
+            System.out.println("Waiting");
             DesiredCapabilities cap=new DesiredCapabilities();
             cap.setCapability("deviceName", emuName);
             cap.setCapability("udid", udid);
