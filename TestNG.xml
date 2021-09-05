@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Gennaro">
+<suite name="One">
+    <parameter name="suitename" value="Suite ONE"/>
+
     <test name="app0">
         <parameter name="deviceName" value="emulator-5554" />
         <parameter name="udid" value="emulator-5554" />

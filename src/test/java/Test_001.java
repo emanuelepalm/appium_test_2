@@ -1,5 +1,4 @@
 
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.testng.annotations.Test;
@@ -14,14 +13,12 @@ import static parameter.GlobalParameters.USERDIR;
 
 public class Test_001 extends BaseClass {
 
-    static private ExtentReports extentReports;
     static private ExtentTest extentTest;
 
     @Test
     public void setup() throws InterruptedException {
         try {
-            extentReports = new ExtentReports(USERDIR + File.separator + "report" + File.separator + "report.html", false);
-            extentReports.loadConfig(new File(USERDIR + File.separator + "report_config.xml"));
+
             extentTest = extentReports.startTest("TEST AUTOMATION");
 
             Thread.sleep(5000);
