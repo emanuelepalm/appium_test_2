@@ -19,19 +19,26 @@ public class AndroidEmu {
         System.out.println("Starting emulator for '" + nameOfAVD + "' ...");
         String[] aCommand = new String[] { emulatorPath, "-avd", nameOfAVD,"-no-boot-anim","-wipe-data"};
         try {
-            Process process = new ProcessBuilder(aCommand).start();
-            BufferedReader br = new BufferedReader( new InputStreamReader( process.getInputStream()));
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
+            for(int i = 0; i < 5; i++) {
+                Process process = new ProcessBuilder(aCommand).start();
+                BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+                BufferedReader br1 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                String line1 = null;
+                while ((line1 = br1.readLine()) != null) {
+                    System.out.println(line);
+                }
+                process.waitFor(60, TimeUnit.SECONDS);
+                Thread.sleep(5000);
+                System.out.println("Waiting");
+                Thread.sleep(5000);
+                System.out.println("Waiting");
+                Thread.sleep(5000);
+                System.out.println("Waiting");
             }
-            BufferedReader br1 = new BufferedReader( new InputStreamReader( process.getErrorStream()));
-            String line1=null;
-            while ((line1 = br1.readLine()) != null) {
-                System.out.println(line);
-            }
-            process.waitFor(60, TimeUnit.SECONDS);
-            Thread.sleep(30000);
             System.out.println("Emulator launched successfully!");
         } catch (Exception e) {
             e.printStackTrace();
