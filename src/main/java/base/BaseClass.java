@@ -54,8 +54,9 @@ public class BaseClass {
 
         @AfterTest
         public void tearDown() throws InterruptedException {
-            server.stop();
             Thread.sleep(5000);
+
+            server.stop();
             System.out.println("APPIUM STOPPING");
         }
 
