@@ -40,7 +40,7 @@ public class BaseClass {
         @Parameters({"udid", "platformVersion","url1","url2","appname"})
         public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
-            AndroidEmu.checkDevices();
+            while(!AndroidEmu.checkDevices());
             server = new AppiumServer();
             Thread.sleep(5000);
 

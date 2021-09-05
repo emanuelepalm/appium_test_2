@@ -2,6 +2,7 @@ package emu;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
@@ -47,25 +48,45 @@ public class AndroidEmu {
         }
     }
 
-    public static void checkDevices() {
+    public static boolean checkDevices() {
         System.out.println("ADB DEVICES");
         String[] aCommand = new String[]{"adb","devices"};
         try {
             Process process = new ProcessBuilder(aCommand).start();
-            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-            }
-            BufferedReader br1 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            String line1 = null;
-            while ((line1 = br1.readLine()) != null) {
-                System.out.println(line);
+            String error = error(process);
+            String output = output(process);
+
+            if(error != "") System.out.println(error);
+            else if(output != ""){
+                if(output.contains("offline"))
+                return false;
             }
             process.waitFor(60, TimeUnit.SECONDS);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
+    }
+
+    private static String error(Process process) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+            return line;
+        }
+        return "";
+    }
+
+    private static String output(Process process) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+            return line;
+        }
+        return "";
     }
 
     public static void closeEmu() {
