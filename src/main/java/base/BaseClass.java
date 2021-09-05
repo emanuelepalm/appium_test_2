@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import appium.AppiumServer;
+import com.sun.org.apache.xpath.internal.operations.And;
 import emu.AndroidEmu;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
@@ -43,6 +44,7 @@ public class BaseClass {
 
         @AfterTest
         public void tearDown() throws InterruptedException {
+            AndroidEmu.closeEmu();
             server.stop();
             Thread.sleep(5000);
             System.out.println("APPIUM STOPPING");
