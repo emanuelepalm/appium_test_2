@@ -38,8 +38,9 @@ public class BaseClass {
         public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
             while(!AndroidEmu.checkDevices());
-            server = new AppiumServer();
             Thread.sleep(5000);
+
+            server = new AppiumServer();
 
             DesiredCapabilities cap=new DesiredCapabilities();
             cap.setCapability("deviceName", emuName);
