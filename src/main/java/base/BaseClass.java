@@ -28,6 +28,8 @@ public class BaseClass {
         {
 
             AndroidEmu.launchEmulator("Pixel4J");
+            Thread.sleep(5000);
+
             server = new AppiumServer();
             Thread.sleep(5000);
             DesiredCapabilities cap=new DesiredCapabilities();
