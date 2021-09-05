@@ -23,8 +23,8 @@ public class BaseClass {
         public String emuName = "emulator-4443";
 
         @BeforeTest
-        @Parameters({"udid", "platformVersion","url1","url2"})
-        public void setup(String udid,String platformVersion,String url1, String url2) throws InterruptedException, MalformedURLException
+        @Parameters({"udid", "platformVersion","url1","url2","appname"})
+        public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
 
 
@@ -36,7 +36,7 @@ public class BaseClass {
             DesiredCapabilities cap=new DesiredCapabilities();
             cap.setCapability("deviceName", emuName);
             cap.setCapability("udid", udid);
-            cap.setCapability("app", APK_PATH);
+            cap.setCapability("app", APK_PATH + appName + ".apk");
             cap.setCapability("platformName", "Android");
             cap.setCapability("platformVersion", platformVersion);
             driver=new AppiumDriver<MobileElement>(new URL(url1 + server.getPort() + url2), cap);
