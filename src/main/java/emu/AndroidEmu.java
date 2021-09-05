@@ -11,13 +11,13 @@ public class AndroidEmu {
     private static String emulatorPath = sdkPath +  "emulator" + File.separator + "emulator ";
 
     /**
-     * Starts an emulator for the provided AVD name
+     * Starts an emulator
      *
-     * @param nameOfAVD
+     *
      */
-    public static void launchEmulator(String nameOfAVD) {
-        System.out.println("Starting emulator for '" + nameOfAVD + "' ...");
-        String[] aCommand = new String[] { emulatorPath, "-avd", nameOfAVD,"-no-boot-anim","-wipe-data"};
+    public static void launchEmulator() {
+        System.out.println("Starting emulator...");
+        String[] aCommand = new String[] { "android-emulator"};
         try {
                 Process process = new ProcessBuilder(aCommand).start();
                 BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -36,6 +36,27 @@ public class AndroidEmu {
 
 
             System.out.println("Emulator launched successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void checkDevices() {
+        System.out.println("ADB DEVICES");
+        String[] aCommand = new String[]{"adb","devices"};
+        try {
+            Process process = new ProcessBuilder(aCommand).start();
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            BufferedReader br1 = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            String line1 = null;
+            while ((line1 = br1.readLine()) != null) {
+                System.out.println(line);
+            }
+            process.waitFor(60, TimeUnit.SECONDS);
         } catch (Exception e) {
             e.printStackTrace();
         }
