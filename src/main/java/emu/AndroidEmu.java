@@ -84,7 +84,7 @@ public class AndroidEmu {
         String output = "";
         String line;
         boolean emu = false;
-        while ((line = br.readLine()) != null || !emu) {
+        while ((line = br.readLine()) != null && !emu) {
             System.out.println(line);
             output += line;
             emu = line.contains("emulator");
