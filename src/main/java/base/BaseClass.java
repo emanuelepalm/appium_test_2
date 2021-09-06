@@ -29,9 +29,10 @@ public class BaseClass {
         @BeforeSuite
         @Parameters({"suitename"})
         public void init(String suiteName){
+            AndroidEmu.launchEmulator();
+
             extentReports = new ExtentReports(USERDIR + File.separator + "report" + File.separator + suiteName + ".html", true);
             extentReports.loadConfig(new File(USERDIR + File.separator + "report_config.xml"));
-            server = new AppiumServer();
 
         }
 
@@ -39,6 +40,7 @@ public class BaseClass {
         @Parameters({"udid", "platformVersion","url1","url2","appname"})
         public void setup(String udid,String platformVersion,String url1, String url2, String appName) throws InterruptedException, MalformedURLException
         {
+            server = new AppiumServer();
             Thread.sleep(10000);
 
             while(!AndroidEmu.checkDevices());
@@ -58,15 +60,15 @@ public class BaseClass {
         @AfterTest
         public void tearDown() throws InterruptedException {
             Thread.sleep(5000);
+            server.stop();
 
         }
 
         @AfterSuite
         public void end() {
             extentReports.close();
-            server.stop();
             System.out.println("APPIUM STOPPING");
-
+            AndroidEmu.closeEmu();
         }
 }
 
